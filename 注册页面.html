@@ -1,0 +1,354 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>注册——基于区块链的自行车赋码溯源系统</title>
+  <link rel="icon" href="./img/图片1.png" type="image/x-icon" sizes="16x16" />
+  <style>
+    * {
+      background-color: #f7f9fb;
+    }
+
+    .title {
+      text-align: center;
+    }
+
+    .zhuce {
+      width: 60%;
+      border: 1px solid #cccccc;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px auto;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      font-family: "Microsoft YaHei", sans-serif;
+      color: #333333;
+      font-size: 18px;
+      display: block;
+      text-align: left;
+      background-color: white;
+    }
+
+    input {
+      width: 80%;
+      height: 30px;
+      border: 1px solid #cccccc;
+      padding: 5px;
+      margin: 10px 0;
+      background-color: white;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      height: 50px;
+      background-color: #234e9b;
+      color: white;
+      border: none;
+      padding: 5px;
+      margin: 10px 0;
+      cursor: pointer;
+      border-radius: 4px;
+      font-size: 20px;
+      transition: background-color 0.3s ease;
+    }
+
+    select:hover,
+    input:hover {
+      border: 1px solid #66ccff;
+    }
+
+    button:hover {
+      border: 1px solid #66ccff;
+      background-color: #66ccff;
+    }
+
+    select {
+      width: 83%;
+      height: 40px;
+      border: 1px solid #cccccc;
+      padding: 5px;
+      padding-left: 1px;
+      margin: 10px 0;
+      background-color: white;
+      border-radius: 4px;
+      font-size: 16px;
+      color: #757575;
+    }
+
+    .left {
+      width: 50%;
+      float: left;
+      background-color: white;
+    }
+
+    .right {
+      width: 50%;
+      float: right;
+      background-color: white;
+    }
+
+    .clear {
+      clear: both;
+    }
+
+    .top,
+    .bottom,
+    .fullname,
+    .truename,
+    .idcard,
+    .tel,
+    .telyan,
+    .region,
+    .location,
+    .pinpai,
+    .idimg,
+    .else,
+    .System,
+    a,
+    .psw,
+    .ConFirmpsw,
+    b,
+    .errorMsg {
+      background-color: white;
+    }
+
+    .fullname,
+    .truename,
+    .idcard,
+    .tel,
+    .telyan,
+    .errorMsg {
+      margin-bottom: 3px;
+    }
+
+    label:before {
+      display: inline-block;
+      margin-right: 4px;
+      color: #ff4d4f;
+      font-size: 14px;
+      font-family: SimSun, sans-serif;
+      line-height: 1;
+      content: "*";
+    }
+
+    img {
+      margin-top: 10px;
+      width: 90%;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .left .telyan input[type="text"] {
+      width: 50%;
+    }
+
+    .left .telyan button {
+      width: 30%;
+      height: 40px;
+      font-size: 16px;
+    }
+
+    .zhuce .bottom {
+      text-align: center;
+    }
+
+    .zhuce .bottom .reuse {
+      text-decoration: none;
+      color: #2aaced;
+      background-color: white;
+    }
+
+    @keyframes slideDown {
+      from {
+        transform: translateY(-100%);
+      }
+
+      to {
+        transform: translateY(0);
+      }
+    }
+
+    .zhuce {
+      animation: slideDown 1s ease-out;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="title">
+    <h1>基于区块链的自行车赋码溯源系统</h1>
+  </div>
+  <div class="zhuce">
+    <div class="top">
+      <div class="left">
+        <div class="fullname">
+          <label for="fullname">用户名</label>
+          <input type="text" placeholder="请输入用户名" />
+        </div>
+        <div class="truename">
+          <label for="truename">真实姓名</label>
+          <input type="text" placeholder="请输入真实姓名" />
+        </div>
+        <div class="idcard">
+          <label for="idcard">身份证号码</label>
+          <input type="text" placeholder="请输入身份证号码" />
+        </div>
+        <div class="tel">
+          <label for="tel">手机号码</label>
+          <input type="text" placeholder="请输入手机号码" />
+        </div>
+        <div class="telyan">
+          <label for="telyan">手机验证码</label>
+          <input type="text" placeholder="手机验证码" />
+          <button onclick="GetYan()">获取验证码</button>
+        </div>
+        <div class="psw">
+          <label for="psw">密码</label>
+          <input type="text" id="psw" placeholder="请输入密码" />
+        </div>
+        <div class="ConFirmpsw">
+          <label for="ConFirmpsw">确认密码</label>
+          <input type="text" id="ConFirmpsw" onblur="isCom()" placeholder="请再次输入密码" />
+        </div>
+        <div id="errorMsg"></div>
+      </div>
+      <div class="right">
+        <div class="System">
+          <label for="System">用户类型</label>
+          <select id="System">
+            <option value="1">请选择申请的用户类型</option>
+            <option value="2">企业用户</option>
+            <option value="3">个人用户</option>
+          </select>
+        </div>
+        <div class="region">
+          <label for="region">所在区域</label>
+          <select id="region">
+            <option value="1">请选择所在区域</option>
+            <option value="110000">北京市</option>
+            <option value="120000">天津市</option>
+            <option value="130000">河北省</option>
+            <option value="140000">山西省</option>
+            <option value="150000">内蒙古自治区</option>
+            <option value="210000">辽宁省</option>
+            <option value="220000">吉林省</option>
+            <option value="230000">黑龙江省</option>
+            <option value="310000">上海市</option>
+            <option value="320000">江苏省</option>
+            <option value="330000">浙江省</option>
+            <option value="340000">安徽省</option>
+            <option value="350000">福建省</option>
+            <option value="360000">江西省</option>
+            <option value="370000">山东省</option>
+            <option value="410000">河南省</option>
+            <option value="420000">湖北省</option>
+            <option value="430000">湖南省</option>
+            <option value="440000">广东省</option>
+            <option value="450000">广西壮族自治区</option>
+            <option value="460000">海南省</option>
+            <option value="500000">重庆市</option>
+            <option value="510000">四川省</option>
+            <option value="520000">贵州省</option>
+            <option value="530000">云南省</option>
+            <option value="540000">西藏自治区</option>
+            <option value="610000">陕西省</option>
+            <option value="620000">甘肃省</option>
+            <option value="630000">青海省</option>
+            <option value="640000">宁夏回族自治区</option>
+            <option value="650000">新疆维吾尔自治区</option>
+            <option value="710000">中国台湾</option>
+            <option value="810000">香港特别行政区</option>
+            <option value="820000">澳门特别行政区</option>
+          </select>
+        </div>
+        <div class="location">
+          <label for="location">详细住址</label>
+          <input type="text" placeholder="请输入详细住址" />
+        </div>
+        <div class="pinpai">
+          <label for="paizi">自行车品牌</label>
+          <input type="text" placeholder="请输入自行车品牌" />
+        </div>
+        <div class="idimg">
+          <label for="idimg">上传身份证</label>
+          <img src="./png/正反.png" id="idimg" alt="#" />
+          <input type="file" id="imgInput" style="display: none" />
+        </div>
+      </div>
+
+      <div class="clear"></div>
+    </div>
+    <div class="bottom">
+      <button onclick="SignUpFunction()">注 册</button>
+      <br />
+      <a href="./登录页面.html" class="reuse"><b>使用已有账号登录</b></a>
+    </div>
+  </div>
+  <script>
+    //提示注册成功
+    function SignUpFunction() {
+      if (window.confirm("注册成功！")) {
+        window.location = "./登录页面.html";
+      }
+    }
+    //获取验证码成功
+    function GetYan() {
+      alert("获取成功！");
+    }
+    //判断密码是否一致
+    function isCom() {
+      var text1 = document.getElementById("psw").value;
+      var text2 = document.getElementById("ConFirmpsw").value;
+      var errorMsg = document.getElementById("errorMsg");
+      if (text2 == text1) {
+        errorMsg.innerHTML = "";
+        return true;
+      } else {
+        errorMsg.innerHTML = "两次输入的密码不一致";
+        errorMsg.style.backgroundColor = "white";
+        return false;
+      }
+    }
+    //上传身份证
+    window.onload = function idcard() {
+      // 获取图片元素和文件输入元素
+      var uploadImage = document.getElementById("idimg");
+      var fileInput = document.getElementById("imgInput");
+
+      // 当点击图片时，触发文件
+      uploadImage.addEventListener("click", function () {
+        fileInput.click();
+      });
+
+      // 当选择文件后，处理文件
+      fileInput.addEventListener("change", function () {
+        var file = this.files[0]; // 获取选中的文件
+
+        // 确保文件存在
+        if (file) {
+          var reader = new FileReader(); // 创建 FileReader 对象
+
+          // 当文件读取完成后，将图片的 src 属性设置为文件的数据 URL
+          reader.onloadend = function () {
+            uploadImage.src = reader.result;
+          };
+
+          // 读取文件
+          reader.readAsDataURL(file);
+        }
+      });
+    };
+  </script>
+</body>
+
+</html>

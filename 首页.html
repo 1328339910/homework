@@ -1,0 +1,270 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>首页——基于区块链的自行车赋码溯源系统</title>
+  <link rel="icon" href="./png/图片1.png" type="image/x-icon" sizes="16x16" />
+  <style>
+    * {
+      background-color: #f7f9fb;
+    }
+
+    #Logo {
+      width: 70px;
+      /* Logo宽度 */
+      height: auto;
+      /* 高度自动，保持图片比例 */
+    }
+
+    #serch {
+      display: inline-flex;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      padding: 0.5rem 2rem;
+    }
+
+    .navbar img {
+      height: 50px;
+      /* 调整您Logo的大小 */
+      cursor: pointer;
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      border: 1px solid #ddd;
+      padding: 5px;
+      border-radius: 20px;
+      flex-grow: 1;
+      /* 搜索框填满剩余空间 */
+      margin: 0 10px;
+      /* 添加左右间距 */
+    }
+
+    .search-box input[type="text"] {
+      font-size: 20px;
+      font-style: border;
+      border: none;
+      outline: none;
+      padding: 5px;
+      margin-right: 5px;
+      flex-grow: 1;
+      /* 输入字段填满搜索框 */
+    }
+
+    .language-switcher {
+      margin-right: 5px;
+      font-size: 20px;
+      height: 50px;
+      width: 100px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      padding: 5px 10px;
+      /* 增加内边距 */
+      border-radius: 20px;
+      /* 圆角边框 */
+      border: 1px solid #ccc;
+    }
+
+    .language-switcher img {
+      width: 40px;
+      /* 设置具体宽度 */
+      height: auto;
+      /* 高度自动，保持图片比例 */
+    }
+
+    .language-switcher span {
+      margin-left: 5px;
+      /* 与图标之间的间距 */
+      font-size: 22px;
+      /* 增大字体大小 */
+      color: #333;
+      /* 字体颜色 */
+    }
+
+    .button {
+      font-size: 20px;
+      height: 60px;
+      width: 100px;
+      margin: 5px;
+      margin-right: 10px;
+      padding: 10px 15px;
+      text-align: center;
+      background-color: #0056b3;
+      color: #ffffff;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #66ccff;
+    }
+
+    .imgbox {
+      width: 100%;
+      height: 900px;
+      /* 调整为适合的高度 */
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .imgbox img {
+      width: 80%;
+      /* 非激活图片的大小 */
+      opacity: 0.6;
+      /* 非激活图片的透明度 */
+      transition: all 1s ease-in-out;
+      position: absolute;
+    }
+
+    .imgbox img.active {
+      width: 100%;
+      /* 激活图片的大小 */
+      opacity: 1;
+      /* 激活图片的透明度 */
+      z-index: 1;
+    }
+
+    #forum-section {
+      font-size: 20px;
+      max-width: 100%;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #ddd;
+      background-color: #f9f9f9;
+    }
+
+    #comments-area {
+      margin-bottom: 20px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 20px;
+    }
+
+    #comment-box {
+      width: 100%;
+      height: 200px;
+      font-size: 20px;
+      font-family: "微软雅黑";
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    #comment-form button {
+      background-color: #0056b3;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      font-size: 20px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="navbar">
+    <img src="./png/图片1.png" alt="Logo" id="Logo" />
+    <div class="search-box">
+      <input type="text" placeholder="查找/需求帮助？" />
+      <img src="./png/serch.png" alt="Search" />
+    </div>
+    <div class="language-switcher">
+      <img src="./png/globe-icon-png-1.png" alt="Language" />
+      <span>中文</span>
+    </div>
+    <button class="button" onclick="login()">登录</button>
+    <button class="button" onclick="signup()">注册</button>
+    <button class="button" onclick="scrollToElement('forum-section')">
+      论坛
+    </button>
+  </div>
+  <br />
+
+  <div class="imgbox">
+    <img src="./png/1.png" alt="#" class="active" />
+    <img src="./png/2.png" alt="#" />
+    <img src="./png/3.png" alt="#" />
+    <img src="./png/4.png" alt="#" />
+    <img src="./png/5.png" alt="#" />
+    <img src="./png/6.png" alt="#" />
+  </div>
+
+  <div id="forum-section">
+    <h2>论坛讨论区</h2>
+    <div id="comments-area">
+      <!-- 这里将显示评论 -->
+    </div>
+    <div id="comment-form">
+      <textarea id="comment-box" placeholder="发表你的评论"></textarea>
+      <button onclick="postComment()">发表评论</button>
+    </div>
+  </div>
+  <script>// 跳转页面
+    function login() {
+      window.location = "./登录index.html";
+    }
+    function signup() {
+      window.location = "./注册页面.html";
+    }
+
+    // 轮播图片
+    document.addEventListener("DOMContentLoaded", () => {
+      let currentSlide = 0;
+      const slides = document.querySelectorAll(".imgbox img");
+      const totalSlides = slides.length;
+
+      const updateSlide = (index) => {
+        slides.forEach((slide) => {
+          slide.classList.remove("active");
+          slide.style.zIndex = 0;
+        });
+        slides[index].classList.add("active");
+        slides[index].style.zIndex = 1;
+      };
+
+      setInterval(() => {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        updateSlide(currentSlide);
+      }, 3000); // 自动播放
+    });
+
+    function scrollToElement(elementId) {
+      const element = document.getElementById(elementId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+
+    function postComment() {
+      var commentBox = document.getElementById("comment-box");
+      var commentsArea = document.getElementById("comments-area");
+      var newComment = document.createElement("p");
+      newComment.textContent = commentBox.value;
+      commentsArea.appendChild(newComment);
+      commentBox.value = ""; // 清空输入框
+    }
+  </script>
+</body>
+
+</html>

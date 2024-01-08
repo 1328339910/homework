@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生产管理</title>
+    <style>
+        /* 页面的整体布局 */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f0f2f5;
+        }
+
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .header,
+        .sidebar,
+        .content {
+            padding: 20px;
+        }
+
+        .header {
+            background: #ffffff;
+            border-bottom: 1px solid #dddddd;
+            padding-bottom: 10px;
+            height: 80px;
+            width: auto;
+            clear: left;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            /* 分散对齐子元素 */
+            align-items: center;
+            /* 垂直居中对齐 */
+            padding-right: 50px;
+            /* 右边内边距 */
+        }
+
+        .sidebar {
+            background: #ffffff;
+            float: left;
+            margin-right: 20px;
+            width: 200px;
+            height: 80vh;
+            margin-right: 20px;
+            float: none;
+            text-align: center;
+        }
+
+        .content {
+            background: #ffffff;
+            overflow: hidden;
+            padding: 20px 40px;
+            display: flex;
+            flex-grow: 1;
+            height: 80vh;
+        }
+
+        .main-container {
+            display: flex;
+        }
+
+        .headerNeiRong p {
+            width: auto;
+            height: auto;
+            font-size: 20px;
+        }
+
+        /* 边栏的样式 */
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            padding: 10px;
+            border-bottom: 1px solid #dddddd;
+        }
+
+        #logo {
+            width: 100px;
+            height: 100px;
+        }
+
+        .headerNeiRong {
+            display: flex;
+            justify-content: right;
+            align-items: center;
+            padding-right: 50px;
+            position: absolute;
+            right: 30px;
+        }
+
+        .headerNeiRong p {
+            padding-right: 20px;
+        }
+
+        /*这个是对用户下拉菜单的样式控制*/
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 100px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* 显示下拉菜单 */
+        .show {
+            display: block;
+        }
+
+        /*用户下拉菜单的样式到这截止*/
+        .search-container {
+            position: absolute;
+            text-align: center;
+
+        }
+
+        /* 表格样式 */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        /* 单元格和表头的边框样式 */
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        /* 表头样式 */
+        th {
+            background-color: #f2f2f2;
+            color: #333;
+            font-weight: bold;
+        }
+
+        /* 悬停效果 */
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        /* 字体样式 */
+        td {
+            color: #333;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+
+<body>
+    <!-- 顶栏 -->
+    <div class="header">
+        <div id="logo">
+            <img id="logo" src="./img/logo.png" alt="">
+        </div>
+        <div class="headerNeiRong">
+            <p>首页</p>
+            <div>
+                <p id="user" style="text-shadow:3px 3px 3px blue;color: lightblue;">管理员</p>
+                <div id="dropdownMenu" class="dropdown-content">
+                    <a href="#">个人空间</a>
+                    <a href="#">退出登录</a>
+                    <!-- <a href="#">可以多加但是没想到要加什么</a> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 主体内容区域 -->
+    <div class="main-container">
+        <!-- 侧边栏 -->
+        <div class="sidebar">
+            <ul>
+                <li><a href="./内页首页.html">起始页</a></li>
+                <li style="color: rgb(64, 158, 255); font-size: 26px;">生产管理</li>
+                <li><a href="#">人事管理</a></li>
+                <li><a href="#">考勤管理</a></li>
+                <li>待定</li>
+                <li>待定</li>
+            </ul>
+        </div>
+
+        <!-- 中部主要内容 -->
+        <div class="content">
+            <!-- 主内容区域 -->
+            <div class="search-container">
+                <input type="text" id="search-box" placeholder="输入关键字" style="width: 250px;height: auto;">
+                </select>
+                <button id="search-button">搜索</button>
+                <table>
+                    <tr>
+                        <th style="text-align: center;">生产线</th>
+                        <th></th>
+                        <th>车间负责人</th>
+                        <th>生产情况</th>
+                    </tr>
+                    <tr>
+                        <td class="hebing" id="chejia" rowspan="3" style="text-align: center;">车架</td>
+                        <td>1号线</td>
+                        <td>余文康</td>
+                        <td>贴标中</td>
+                    </tr>
+                    <tr>
+                        <td>2号线</td>
+                        <td>余文康</td>
+                        <td>贴标中</td>
+                    </tr>
+                    <tr>
+                        <td>3号线</td>
+                        <td>余文康</td>
+                        <td>停止</td>
+                    </tr>
+                    <tr>
+                        <td class="hebing" rowspan="2" style="text-align: center;">前叉</td>
+                        <td>4号线</td>
+                        <td>余文康</td>
+                        <td>停止</td>
+                    </tr>
+                    <tr>
+                        <td>5号线</td>
+                        <td>余文康</td>
+                        <td>停止</td>
+                    </tr>
+                    <tr>
+                        <td class="hebing" style="text-align: center;">车轮</td>
+                        <td>6号线</td>
+                        <td>林宇烨</td>
+                        <td>贴标中</td>
+                    </tr>
+                    <tr>
+                        <td class="hebing" rowspan="3" style="text-align: center;">传动装置</td>
+                        <td>飞轮盘</td>
+                        <td>林宇烨</td>
+                        <td>离线！！</td>
+                    </tr>
+                    <tr>
+                        <td>链条</td>
+                        <td>林宇烨</td>
+                        <td>离线！！</td>
+                    </tr>
+                    <tr>
+                        <td>曲柄及踏板</td>
+                        <td>林宇烨</td>
+                        <td>离线！！</td>
+                    </tr>
+                    <tr>
+                        <td class="hebing" rowspan="3" style="text-align: center;">刹车系统</td>
+                        <td>刹车夹器</td>
+                        <td>林宇烨</td>
+                        <td>正常生产</td>
+                    </tr>
+                    <tr>
+                        <td>刹车线</td>
+                        <td>林宇烨</td>
+                        <td>正常生产</td>
+                    </tr>
+                    <tr>
+                        <td>刹车皮</td>
+                        <td>林宇烨</td>
+                        <td>贴标中</td>
+                    </tr>
+                    <tr>
+                        <td class="hebing" rowspan="3" style="text-align: center;">座椅和座杆</td>
+                        <td>7号线</td>
+                        <td>林宇烨</td>
+                        <td>贴标中</td>
+                    </tr>
+                    <tr>
+                        <td>8号线</td>
+                        <td>蔡徐坤</td>
+                        <td>贴标中</td>
+                    </tr>
+                    <tr>
+                        <td>9号线</td>
+                        <td>蔡徐坤</td>
+                        <td>贴标中</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <script>
+            // 以下是对用户名区域点击事件的调控
+            // 点击时显示下拉菜单
+            document.getElementById("user").onclick = function () {
+                document.getElementById("dropdownMenu").classList.toggle("show");
+            }
+
+
+            // 点击下拉菜单外的区域时隐藏菜单
+            window.onclick = function (event) {
+                if (!event.target.matches('#user')) {
+                    var dropdowns = document.getElementsByClassName("dropdown-content");
+                    for (var i = 0; i < dropdowns.length; i++) {
+                        var openDropdown = dropdowns[i];
+                        if (openDropdown.classList.contains('show')) {
+                            openDropdown.classList.remove('show');
+                        }
+                    }
+                }
+            }
+            // 对用户名区域的控制到此为止
+            // 以下是搜索框的控制
+            document.getElementById('search-button').addEventListener('click', function () {
+                var searchText = document.getElementById('search-box').value.toLowerCase();
+                var table = document.querySelector('table');
+                var rows = table.getElementsByTagName('tr');
+
+                // 循环遍历所有行，隐藏不匹配的行
+                for (var i = 1; i < rows.length; i++) { // i从1开始，跳过表头
+                    var rowText = rows[i].textContent.toLowerCase();
+
+                    // 判断行是否匹配搜索文本
+                    if (rowText.includes(searchText)) {
+                        // 显示匹配行及其随后的合并行
+                        rows[i].style.display = ''; // 显示当前行
+                        var j = i + 1;
+                        // 检查随后的行是否为合并行
+                        while (j < rows.length && rows[j].classList.contains('merge-row')) {
+                            rows[j].style.display = ''; // 显示合并行
+                            j++;
+                        }
+                        i = j - 1; // 跳过已处理的合并行
+                    } else {
+                        rows[i].style.display = 'none'; // 隐藏行
+                    }
+                }
+            });
+
+            // 以下是对跳转的控制
+            window.onload = function () {
+                const urlParams = new URLSearchParams(window.location.search);
+                const partId = urlParams.get('part');
+                const personName = urlParams.get('person');
+
+                if (partId) {
+                    filterTableByPartId(partId);
+                }
+                if (personName) {
+                    filterTableByPerson(decodeURIComponent(personName));
+                }
+            };
+            // 第一列的
+            function filterTableByPartId(partId) {
+                const rows = document.querySelectorAll('table tr');
+                rows.forEach(row => {
+                    // 假设部件名称在每行的第一个单元格中
+                    if (!row.cells[0] || row.cells[0].textContent.trim() !== partId) {
+                        row.style.display = 'none'; // 隐藏不匹配的行
+                    }
+                });
+            }
+            // 第三列的
+            function filterTableByPerson(personName) {
+                const rows = document.querySelectorAll('table tr');
+                rows.forEach(row => {
+                    if (row.cells.length > 2) {
+                        const cellValue = row.cells[2].textContent.trim();
+                        if (cellValue === personName) {
+                            row.style.display = '';
+                        } else {
+                            row.style.display = 'none';
+                        }
+                    }
+                });
+            }
+            // 在搞第三列的跳转时候出现了很多问题，查了一下说什么要用decodeURIComponent来确保中文字被正确解码，不懂捏
+            // 然而还是解决不了第三列的车间负责人名字无法正确跳转的问题
+            // 崩溃了哥，浪费我快两小时各种查
+        </script>
+</body>
+
+</html>

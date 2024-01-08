@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人资料</title>
+    <style>
+        /* 页面的整体布局 */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f0f2f5;
+        }
+
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .header,
+        .sidebar,
+        .content {
+            padding: 20px;
+        }
+
+        .header {
+            background: #ffffff;
+            border-bottom: 1px solid #dddddd;
+            padding-bottom: 10px;
+            height: 80px;
+            width: auto;
+            clear: left;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            /* 分散对齐子元素 */
+            align-items: center;
+            /* 垂直居中对齐 */
+            padding-right: 50px;
+            /* 右边内边距 */
+        }
+
+        .sidebar {
+            background: #ffffff;
+            float: left;
+            margin-right: 20px;
+            width: 200px;
+            height: 80vh;
+            margin-right: 20px;
+            float: none;
+            text-align: center;
+        }
+
+        .content {
+            background: #ffffff;
+            overflow: hidden;
+            padding: 20px 40px;
+            display: flex;
+            flex-grow: 1;
+            height: 80vh;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .main-container {
+            display: flex;
+        }
+
+        .headerNeiRong p {
+            width: auto;
+            height: auto;
+            font-size: 20px;
+        }
+
+        /* 边栏的样式 */
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            padding: 10px;
+            border-bottom: 1px solid #dddddd;
+        }
+
+        .sidebar ul li a {
+            padding: 10px;
+            border-bottom: 1px solid #dddddd;
+        }
+
+        /* 内容区域的卡片样式 */
+
+        .flex-item {
+            flex: 1;
+            margin: 10px;
+        }
+
+        #logo {
+            width: 100px;
+            height: 100px;
+        }
+
+        .headerNeiRong {
+            display: flex;
+            justify-content: right;
+            align-items: center;
+            padding-right: 50px;
+            position: absolute;
+            right: 30px;
+        }
+
+        .headerNeiRong p {
+            padding-right: 20px;
+        }
+
+        /*这个是对用户下拉菜单的样式控制*/
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 100px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* 显示下拉菜单 */
+        .show {
+            display: block;
+        }
+
+        /*用户下拉菜单的样式到这截止*/
+        /* 个人空间盒子 */
+        .kongjian {
+            background-image: url(../img/背景图片.png);
+            background-position: center;
+            background-size: cover;
+            width: 1200px;
+            height: 650px;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+        }
+
+        .kongjian table {
+            font-size: 26px;
+        }
+
+        select {
+            font-size: 22px;
+        }
+
+        input {
+            font-size: 22px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 顶栏 -->
+    <div class="header">
+        <div id="logo">
+            <img id="logo" src="./img/logo.png" alt="">
+        </div>
+        <div class="headerNeiRong">
+            <p>首页</p>
+            <div>
+                <p id="user" style="text-shadow:2px 2px 2px red;color: lightsalmon;">admin</p>
+                <div id="dropdownMenu" class="dropdown-content">
+                    <a href="#">个人空间</a>
+                    <a href="./首页.html">退出登录</a>
+                    <!-- <a href="#">可以多加但是没想到要加什么</a> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 主体内容区域 -->
+    <div class="main-container">
+        <!-- 侧边栏 -->
+        <div class="sidebar">
+            <ul>
+                <li style="color: rgb(64, 158, 255); font-size: 26px;">个人资料</li>
+                <li><a href="./账号安全.html">账号安全</a></li>
+                <li><a href="#">推送设置</a></li>
+                <li><a href="#">第三方授权设置</a></li>
+            </ul>
+        </div>
+
+        <!-- 中部主要内容 -->
+        <div class="content">
+            <!-- 主内容区域 -->
+            <div class="kongjian">
+                <div>
+                    <table>
+                        <tr>
+                            <td>昵称</td>
+                            <td></td>
+                            <td></td>
+                            <td id="nicknameDisplay">__________</td>
+                            <td></td>
+                            <td><button id="editNickname">点击修改昵称</button></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>用户名</td>
+                            <td></td>
+                            <td></td>
+                            <td>admin</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>性别</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <select name="sex" id="sex">
+                                    <option value="male">男</option>
+                                    <option value="female">女</option>
+                                </select>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <select name="sex" id="sex">
+                                    <option value="gongkai">公开</option>
+                                    <option value="baomi">保密</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>年龄</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <input type="number" min="1" max="100">
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <select name="age" id="age">
+                                    <option value="gongkai">公开</option>
+                                    <option value="baomi">保密</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>生日</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><input type="date"></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <select name="birth" id="birth">
+                                    <option value="gongkai">公开</option>
+                                    <option value="baomi">保密</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>母校</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><input type="text"></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <select name="school" id="school">
+                                    <option value="gongkai">公开</option>
+                                    <option value="baomi">保密</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>工作单位</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><input type="text"></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <select name="work" id="work">
+                                    <option value="gongkai">公开</option>
+                                    <option value="baomi">保密</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <!-- 用来改昵称 -->
+                <div id="nicknameModal"
+                    style="display: none; position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%); background-color: white; padding: 20px; border: 1px solid #ddd; z-index: 1000;">
+                    <p>请输入新昵称：</p>
+                    <input type="text" id="newNickname">
+                    <button id="saveNickname">保存</button>
+                    <button id="cancelNickname">取消</button>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+        <script>
+            // 以下是对用户名区域点击事件的调控
+            // 点击时显示下拉菜单
+            document.getElementById("user").onclick = function () {
+                document.getElementById("dropdownMenu").classList.toggle("show");
+            }
+
+
+            // 点击下拉菜单外的区域时隐藏菜单
+            window.onclick = function (event) {
+                if (!event.target.matches('#user')) {
+                    var dropdowns = document.getElementsByClassName("dropdown-content");
+                    for (var i = 0; i < dropdowns.length; i++) {
+                        var openDropdown = dropdowns[i];
+                        if (openDropdown.classList.contains('show')) {
+                            openDropdown.classList.remove('show');
+                        }
+                    }
+                }
+            }
+            // 对用户名区域的控制到此为止
+            // 改昵称事件的控制
+            document.getElementById('editNickname').addEventListener('click', function () {
+                document.getElementById('nicknameModal').style.display = 'block';
+            });
+
+            document.getElementById('saveNickname').addEventListener('click', function () {
+                var newNickname = document.getElementById('newNickname').value;
+                if (newNickname.trim() !== '') { // 确保新昵称不为空
+                    document.getElementById('nicknameDisplay').textContent = newNickname; // 更新昵称显示
+                }
+                document.getElementById('nicknameModal').style.display = 'none'; // 关闭弹窗
+            });
+
+            document.getElementById('cancelNickname').addEventListener('click', function () {
+                document.getElementById('nicknameModal').style.display = 'none';
+            });
+
+            // 好像有把更改后的名字保存到本地浏览器的方法，但是我看不懂
+        </script>
+</body>
+
+</html>

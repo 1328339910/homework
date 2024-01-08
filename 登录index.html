@@ -1,0 +1,80 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>加载中...</title>
+  <link rel="icon" href="./png/图片1.png" type="image/x-icon" sizes="16x16" />
+  <style>
+    body,
+    html {
+      background-color: #f3f3f3;
+      height: 100%;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+    }
+
+    #loader-wrapper {
+      text-align: center;
+    }
+
+    #loader {
+      border: 16px solid #f3f3f3;
+      /* Light grey */
+      border-top: 16px solid #3498db;
+      /* Blue */
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      animation: spin 2s linear infinite;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    #countdown {
+      margin-top: 20px;
+      font-size: 1.5em;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="loader-wrapper">
+    <div id="loader"></div>
+    <div id="countdown">3</div>
+  </div>
+  <script>
+    // 倒计时秒数
+    var seconds = 3;
+    var countdown = document.getElementById("countdown");
+
+    // 更新倒计时
+    function updateCountdown() {
+      countdown.innerHTML = seconds;
+      seconds--;
+      if (seconds < 0) {
+        // 倒计时结束后跳转到指定的链接
+        window.location.href = "./登录页面.html";
+      }
+    }
+
+    // 每秒调用一次updateCountdown
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,280 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>登录——基于区块链的自行车赋码溯源系统</title>
+  <link rel="icon" href="./png/图片1.png" type="image/x-icon" sizes="16x16" />
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f7f9fb;
+      font-family: "微软雅黑";
+    }
+
+    .left-section {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .right-section {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: none;
+    }
+
+    .login-box {
+      width: 400px;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .login-box input {
+      width: 92%;
+      padding: 15px;
+      margin-bottom: 18px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    .login-box button {
+      width: 100%;
+      height: 50px;
+      padding: 10px;
+      margin-bottom: 20px;
+      background-color: #234e9b;
+      color: #ffffff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    h2,
+    h5 {
+      text-align: center;
+      padding: 0;
+      margin: 3px;
+    }
+
+    h5 {
+      margin-bottom: 30px;
+    }
+
+    label {
+      display: flex;
+      margin-bottom: 20px;
+      cursor: pointer;
+    }
+
+    .box1 {
+      float: left;
+    }
+
+    .box2 {
+      float: right;
+    }
+
+    .login-box input[type="checkbox"].jizhumima {
+      width: auto;
+      padding: 0;
+      margin-bottom: 40px;
+      border: none;
+      border-radius: 0;
+      width: 18px;
+      height: 18px;
+      vertical-align: middle;
+      margin-bottom: 2px;
+    }
+
+    .login-box input[type="text"].yanzheng {
+      width: 50%;
+      display: flex;
+      float: left;
+    }
+
+    .login-box input[type="text"].yanzheng img {
+      display: flex;
+      float: right;
+    }
+
+    .forgetpsw {
+      text-decoration: none;
+      color: #234e9b;
+    }
+
+    input:hover {
+      border: 1px solid #66ccff;
+      transition: background-color 0.3s ease;
+    }
+
+    .box2 a:hover {
+      text-decoration: underline;
+      color: #66ccff;
+    }
+
+    .box1:hover,
+    .login-box input[type="checkbox"].jizhumima:hover {
+      color: #66ccff;
+    }
+
+    button:hover {
+      background-color: #66ccff;
+      font-size: large;
+    }
+
+    div.warnings {
+      color: red;
+      margin-bottom: 15px;
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateX(-100%);
+      }
+
+      to {
+        transform: translateX(0);
+      }
+    }
+
+    .left-section {
+      animation: slideIn 1s ease-out;
+    }
+
+    @keyframes slideInRight {
+      from {
+        transform: translateX(100%);
+      }
+
+      to {
+        transform: translateX(0);
+      }
+    }
+
+    .right-section {
+      animation: slideInRight 1s ease-out;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="left-section">
+    <img src="./png/登陆界面左图.png" alt="#" style="max-width: 70%" />
+  </div>
+  <div class="right-section">
+    <div class="login-box">
+      <h2>基于区块链的自行车赋码溯源系统</h2>
+      <h5>（网页端入口）</h5>
+      <input type="text" id="UserName" placeholder="账号" />
+      <div class="warnings" id="errorName"></div>
+      <input type="password" id="psw" placeholder="密码" />
+      <div class="warnings" id="errorPsw"></div>
+      <div>
+        <input type="text" placeholder="验证码" class="yanzheng" id="yanzheng" />
+        <img src="./png/验证码.png" alt="#" />
+      </div>
+      <div class="warnings" id="errorMsg"></div>
+      <br />
+      <label class="box1"><input type="checkbox" class="jizhumima" />记住密码</label>
+      <label class="box2"><a href="./忘记密码.html" class="forgetpsw">忘记密码?</a></label>
+      <button onclick="Go()">登录</button>
+      <a href="./注册页面.html"><button>申请注册</button></a>
+    </div>
+  </div>
+  <script>
+    function YZ01() {
+      var UserName = document.getElementById("UserName").value;
+      var YanZheng = document.getElementById("yanzheng").value;
+      var Password = document.getElementById("psw").value;
+      if (YanZheng == "s1bm") {
+        window.location = "./loading1.html";
+        errorMsg.innerHTML = "";
+        return true;
+      } else {
+        errorMsg.innerHTML = "验证码错误";
+        errorMsg.style.backgroundColor = "white";
+      }
+    }
+    function YZ02() {
+      var UserName = document.getElementById("UserName").value;
+      var YanZheng = document.getElementById("yanzheng").value;
+      var Password = document.getElementById("psw").value;
+      if (YanZheng == "s1bm") {
+        window.location = "./loading2.html";
+        errorMsg.innerHTML = "";
+        return true;
+      } else {
+        errorMsg.innerHTML = "验证码错误";
+        errorMsg.style.backgroundColor = "white";
+      }
+    }
+    function PW01() {
+      var UserName = document.getElementById("UserName").value;
+      var YanZheng = document.getElementById("yanzheng").value;
+      var Password = document.getElementById("psw").value;
+      if (Password == "password01") {
+        YZ01();
+        errorPsw.innerHTML = "";
+        return true;
+      } else {
+        errorPsw.innerHTML = "密码错误";
+        errorPsw.style.backgroundColor = "white";
+        return false;
+      }
+    }
+    function PW02() {
+      var UserName = document.getElementById("UserName").value;
+      var YanZheng = document.getElementById("yanzheng").value;
+      var Password = document.getElementById("psw").value;
+      if (Password == "password02") {
+        YZ02();
+        errorPsw.innerHTML = "";
+        return true;
+      } else {
+        errorPsw.innerHTML = "密码错误";
+        errorPsw.style.backgroundColor = "white";
+        return false;
+      }
+    }
+    function Go() {
+      var UserName = document.getElementById("UserName").value;
+      var YanZheng = document.getElementById("yanzheng").value;
+      var Password = document.getElementById("psw").value;
+      if (UserName == "admin01") {
+        PW01();
+        errorName.innerHTML = "";
+        return true;
+      } else if (UserName == "admin02") {
+        PW02();
+        errorName.innerHTML = "";
+        return true;
+      } else {
+        errorName.innerHTML = "账号错误";
+        errorName.style.backgroundColor = "white";
+        return false;
+      }
+    }
+    //获取验证码
+    function GetYan() {
+      alert("获取成功！");
+    }
+  </script>
+</body>
+
+</html>

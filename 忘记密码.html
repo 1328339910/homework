@@ -1,0 +1,166 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="./png/图片1.png" type="image/x-icon" sizes="16x16" />
+  <title>忘记密码——基于区块链的自行车赋码溯源系统</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f7f9fb;
+      font-family: "微软雅黑";
+    }
+
+    .left-section {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .right-section {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: none;
+    }
+
+    .refind {
+      width: 400px;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .refind input {
+      width: 92%;
+      margin-bottom: 20px;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    .refind button {
+      width: 100%;
+      height: 50px;
+      padding: 10px;
+      margin-bottom: 20px;
+      background-color: #234e9b;
+      color: #ffffff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    .refind input.left {
+      width: 50%;
+      display: flex;
+      float: left;
+    }
+
+    .refind button.right {
+      width: 40%;
+      display: flex;
+      float: right;
+      text-align: center;
+      align-items: center;
+      vertical-align: middle;
+      justify-content: center;
+    }
+
+    .refind button.return {
+      background-color: white;
+      color: black;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    input:hover {
+      border: 1px solid #66ccff;
+    }
+
+    button:hover {
+      border: 1px solid #66ccff;
+      background-color: #66ccff;
+      font-size: large;
+    }
+
+    @keyframes slideInRight {
+      from {
+        transform: translateX(100%);
+      }
+
+      to {
+        transform: translateX(0);
+      }
+    }
+
+    .right-section {
+      animation: slideInRight 1s ease-out;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="left-section">
+    <img src="./png/登陆界面左图.png" alt="#" style="max-width: 70%" />
+  </div>
+  <div class="right-section">
+    <div class="refind">
+      <h1>找回密码</h1>
+      <input type="text" placeholder="手机号码" />
+      <input type="text" class="left" placeholder="短信验证码" />
+      <button class="right" onclick="GetYan()">获取验证码</button>
+      <input type="text" id="psw" placeholder="新密码" />
+      <input type="text" id="ConFirmpsw" onblur="isCom()" placeholder="确认密码" />
+      <div id="errorMsg"></div>
+      <button id="put" onclick="SueecssFunction()">提交</button>
+      <a href="登录页面.html"><button class="return">返回</button></a>
+    </div>
+  </div>
+  <script>
+    function GetYan() {
+      alert("获取成功！");
+    }
+    function SueecssFunction() {
+      if (window.confirm("提交成功！")) {
+        window.location = "./登录页面.html";
+      }
+    }
+    function GetYan() {
+      alert("获取成功！");
+    }
+    function isCom() {
+      var text1 = document.getElementById("psw").value;
+      var text2 = document.getElementById("ConFirmpsw").value;
+      var errorMsg = document.getElementById("errorMsg");
+      if (text2 == text1) {
+        errorMsg.innerHTML = "";
+        return true;
+      } else {
+        errorMsg.innerHTML = "两次输入的密码不一致";
+        errorMsg.style.backgroundColor = "white";
+        return false;
+      }
+    }
+  </script>
+</body>
+
+</html>
